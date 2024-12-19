@@ -24,7 +24,7 @@ function calResult() {
   for (let i = 0; i < endPoint; i++) {
     var target = qnaList[i].a[select[i]];
     //질문 내의 type에 담겨있는 동물의 배열을 순환
-    for (let j = 0; j < target.length; j++) {
+    for (let j = 0; j < target.type.length; j++) {
       for (let k = 0; k < pointArray.length; k++) {
         if (target.type[j] === pointArray[k].name) {
           pointArray[k].value += 1;
@@ -32,6 +32,7 @@ function calResult() {
       }
     }
   }
+  //정렬 (밸류값을 이용)
   var resultArray = pointArray.sort(function (a, b) {
     if (a.value > b.value) {
       return -1;
@@ -41,6 +42,7 @@ function calResult() {
     }
     return 0;
   });
+  console.log(resultArray)
   let resultword = resultArray[0].key;
   return resultword;
 }
@@ -57,6 +59,7 @@ function goResult() {
     }, 450); // 두 번째 setTimeout 닫음
   }); // 첫 번째 setTimeout 닫음
   console.log(select);
+  calResult();
 } // goResult 함수 닫음
 
 function addAnswer(answerText, qIdx, idx) {
@@ -92,7 +95,7 @@ function addAnswer(answerText, qIdx, idx) {
   );
 }
 function goNext(qIdx) {
-  if (qIdx + 1 === endPoint) {
+  if (qIdx === endPoint) {
     goResult();
     return;
   }
