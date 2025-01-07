@@ -1,38 +1,32 @@
-const url = 'https://magenta-marigold-fcac50.netlify.app/';
+const url = "https://magenta-marigold-fcac50.netlify.app/";
 
-function setShare(){
-  var resultImg = document.querySelector('#resultImg');
+function setShare() {
+  var resultImg = document.querySelector("#resultImg");
   var resultAlt = resultImg.firstElementChild.alt;
-  const shareTitle = '십이간지 연애유형 결과'
+  const shareTitle = "십이간지 연애유형 결과";
   const shareDes = infoList[resultAlt].name;
-  const shareImage = url+'img/image-'+ resultAlt + '.png';
-  const shareURL = url + 'page/result-' + resultAlt + '.html';
+  const shareImage = url + "img/image-" + resultAlt + ".png";
+  const shareURL = url + "page/result-" + resultAlt + ".html";
 
-
-Kakao.Share.sendDefault({
-  objectType: "feed",
-  content: {
-    title: shareTitle,
-    description: shareDes,
-    imageUrl: shareImage,
-    link: {
-      mobileWebUrl: shareURL,
-      webUrl: shareURL
-    },
-  },
-  buttons: [
-    {
-      title: "결과 확인하기",
+  Kakao.Share.sendDefault({
+    objectType: "feed",
+    content: {
+      title: shareTitle,
+      description: shareDes,
+      imageUrl: shareImage,
       link: {
         mobileWebUrl: shareURL,
-        webUrl: shareURL
+        webUrl: shareURL,
       },
     },
-  ],
-});
+    buttons: [
+      {
+        title: "결과 확인하기",
+        link: {
+          mobileWebUrl: shareURL,
+          webUrl: shareURL,
+        },
+      },
+    ],
+  });
 }
-
-function kakaoShare() {
- 
-}
-
